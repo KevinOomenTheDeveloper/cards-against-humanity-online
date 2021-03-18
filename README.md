@@ -1,4 +1,5 @@
 **Gameplay instructions(source: Wikipedia)**
+
 To start the game, each player draws ten white cards.
 
 According to the rule book provided with the game, the person who most recently defecated (a form of primitive randomization) begins as the "Card Czar" (or "Card Tsar") and plays a black card, face up. The Card Czar then reads the question or fill-in-the-blanks phrase on the black card out loud.
