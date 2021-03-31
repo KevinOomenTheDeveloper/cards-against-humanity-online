@@ -1,0 +1,24 @@
+.Footer
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  left: 0;
+  bottom: 0;
+  Width: 100%;
+  background-color: #343a40;
+  margin-top: 10px;
+}
+  
+
+.footer-container
+{
+  text-align: left;
+  flex: 1;
+}
+
+.footer-text
+{
+  color: white;
+}
