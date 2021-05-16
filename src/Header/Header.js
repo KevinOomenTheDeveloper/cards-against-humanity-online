@@ -1,10 +1,15 @@
 import "./Header.scss";
 import { Row, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Conditional from "../Conditional/Conditional"
+import { useKeycloak } from "@react-keycloak/web";
 
 import React from "react";
 
-const Header = ({ headerTitle }) => {
+const Header = ({ headerTitle}) => {
+
+  const {keycloak} = useKeycloak();
+
   return (
     <div>
       <Navbar bg="dark" expand="lg" variant="dark">
@@ -18,21 +23,14 @@ const Header = ({ headerTitle }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link>
-              <Link className="link" to="/createfood">
-                
-              </Link>
+            <Nav.Link as={Link} className="link" to="/">
+              Home
             </Nav.Link>
-            <Nav.Link>
-              <Link className="link" to="/checkout">
-                
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link className="link" to="/categories">
-                
-              </Link>
-            </Nav.Link>
+            <Conditional display={keycloak.hasRealmRole('admin')}>
+              <Nav.Link as={Link} className="link" to="/admin">
+                admin
+              </Nav.Link>
+            </Conditional>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
