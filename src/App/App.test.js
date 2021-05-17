@@ -12,3 +12,7 @@ import { ReactDOM } from "react-router-dom";
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });*/
+
+test('temporary test', () => {
+  return true;
+});
