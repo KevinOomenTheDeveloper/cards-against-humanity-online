@@ -1,5 +1,5 @@
 import "./Header.scss";
-import { Row, Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Conditional from "../Conditional/Conditional"
 import { useKeycloak } from "@react-keycloak/web";
