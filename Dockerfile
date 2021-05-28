@@ -1,25 +1,17 @@
-# Step 1
-FROM node:16-alpine3.11 as build-step
-
-RUN mkdir /app
+FROM node:alpine as build-step
 
 WORKDIR /app
 
-COPY package.json /app
+COPY package*.json .
 
 RUN npm install
 
-COPY . /app
+#from build directory to /app in container
+COPY . .
 
 RUN npm run build
 
-RUN npm install -g serve
+from nginx
 
-ENTRYPOINT serve -p 80 build
-
-# Stage 2
-
-#FROM nginx:1.17.1-alpine
-#RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
-#COPY nginx.conf /etc/nginx
-#COPY --from=build-step /app/build /usr/share/nginx/html
+#copies build output from build-step to hosting folder in nginx
+copy --from=build-step /app/build /usr/share/nginx/html
