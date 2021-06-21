@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@react-keycloak/web": "^3.4.0",
+    "@stomp/stompjs": "^6.1.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
@@ -15,7 +16,9 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-stomp": "^5.1.0",
     "sass": "^1.32.8",
+    "sockjs": "^0.3.21",
     "web-vitals": "^1.1.1"
   },
   "scripts": {

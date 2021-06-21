@@ -311,6 +311,7 @@
       ],
       "security-admin-console": [],
       "admin-cli": [],
+      "chat-service": [],
       "account-console": [],
       "broker": [
         {
@@ -451,8 +452,18 @@
   "webAuthnPolicyPasswordlessCreateTimeout": 0,
   "webAuthnPolicyPasswordlessAvoidSameAuthenticatorRegister": false,
   "webAuthnPolicyPasswordlessAcceptableAaguids": [],
-  "clientProfiles": {},
-  "clientPolicies": {},
+  "clientProfiles": {
+    "profiles": []
+  },
+  "clientPolicies": {
+    "policies": [
+      {
+        "name": "builtin-default-policy",
+        "builtin": true,
+        "enable": false
+      }
+    ]
+  },
   "scopeMappings": [
     {
       "clientScope": "offline_access",
@@ -641,21 +652,86 @@
       ]
     },
     {
-      "id": "c8d6bf25-528b-4f04-9b14-870918c3a76f",
-      "clientId": "front-end",
-      "name": "front-end",
-      "description": "This is the front-end of the cards against humanity online application",
-      "rootUrl": "http://localhost:3000",
-      "adminUrl": "http://localhost:3000",
+      "id": "54780fd1-6009-407c-baf1-dfd48be6332f",
+      "clientId": "chat-service",
+      "name": "chat-service",
+      "description": "This is the chat-service of the cards against humanity online application",
+      "rootUrl": "http://localhost:9012",
+      "adminUrl": "http://localhost:9012",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "http://localhost:3000/*"
+        "http://localhost:9012/*"
       ],
       "webOrigins": [
-        "http://localhost:3000"
+        "http://localhost:9012"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "frontchannelLogout": false,
+      "protocol": "openid-connect",
+      "attributes": {
+        "saml.assertion.signature": "false",
+        "saml.force.post.binding": "false",
+        "saml.multivalued.roles": "false",
+        "saml.encrypt": "false",
+        "oauth2.device.authorization.grant.enabled": "false",
+        "backchannel.logout.revoke.offline.tokens": "false",
+        "saml.server.signature": "false",
+        "saml.server.signature.keyinfo.ext": "false",
+        "use.refresh.tokens": "true",
+        "exclude.session.state.from.auth.response": "false",
+        "oidc.ciba.grant.enabled": "false",
+        "saml.artifact.binding": "false",
+        "backchannel.logout.session.required": "true",
+        "client_credentials.use_refresh_token": "false",
+        "saml_force_name_id_format": "false",
+        "saml.client.signature": "false",
+        "tls.client.certificate.bound.access.tokens": "false",
+        "saml.authnstatement": "false",
+        "display.on.consent.screen": "false",
+        "saml.onetimeuse.condition": "false"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
+      "defaultClientScopes": [
+        "web-origins",
+        "profile",
+        "roles",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "offline_access",
+        "microprofile-jwt"
+      ]
+    },
+    {
+      "id": "c8d6bf25-528b-4f04-9b14-870918c3a76f",
+      "clientId": "front-end",
+      "name": "front-end",
+      "description": "This is the front-end of the cards against humanity online application",
+      "rootUrl": "http://localhost",
+      "adminUrl": "http://localhost",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": false,
+      "clientAuthenticatorType": "client-secret",
+      "redirectUris": [
+        "http://localhost/*"
+      ],
+      "webOrigins": [
+        "http://localhost"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -1380,14 +1456,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
+            "saml-user-attribute-mapper",
             "oidc-full-name-mapper",
             "saml-user-property-mapper",
             "saml-role-list-mapper",
-            "oidc-usermodel-property-mapper",
-            "saml-user-attribute-mapper",
             "oidc-address-mapper",
             "oidc-sha256-pairwise-sub-mapper",
-            "oidc-usermodel-attribute-mapper"
+            "oidc-usermodel-attribute-mapper",
+            "oidc-usermodel-property-mapper"
           ]
         }
       },
@@ -1399,13 +1475,13 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-usermodel-attribute-mapper",
-            "oidc-usermodel-property-mapper",
-            "oidc-sha256-pairwise-sub-mapper",
             "saml-user-attribute-mapper",
+            "oidc-usermodel-attribute-mapper",
             "oidc-full-name-mapper",
-            "oidc-address-mapper",
             "saml-role-list-mapper",
+            "oidc-address-mapper",
+            "oidc-sha256-pairwise-sub-mapper",
+            "oidc-usermodel-property-mapper",
             "saml-user-property-mapper"
           ]
         }
@@ -1474,7 +1550,7 @@
   "supportedLocales": [],
   "authenticationFlows": [
     {
-      "id": "91a8d299-3c40-4aa0-b081-53c6eee3b0df",
+      "id": "8c3cdf09-1aba-437a-b533-b158d688909f",
       "alias": "Account verification options",
       "description": "Method with which to verity the existing account",
       "providerId": "basic-flow",
@@ -1500,7 +1576,7 @@
       ]
     },
     {
-      "id": "a56b786a-655c-4023-ac51-837859bf1af1",
+      "id": "79d92723-b747-4a9f-b226-de3482cee200",
       "alias": "Authentication Options",
       "description": "Authentication options.",
       "providerId": "basic-flow",
@@ -1534,7 +1610,7 @@
       ]
     },
     {
-      "id": "02e2588b-ea8b-483f-8383-98214fb28926",
+      "id": "05b260ca-048f-462a-a447-2fa719a36aa9",
       "alias": "Browser - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1560,7 +1636,7 @@
       ]
     },
     {
-      "id": "9c403f4e-4367-49c5-8183-42300a1ed12e",
+      "id": "038248be-c05c-4f54-97dd-0bc26831135f",
       "alias": "Direct Grant - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1586,7 +1662,7 @@
       ]
     },
     {
-      "id": "32ab5d72-f0fa-4c84-a94d-6a1b961747fe",
+      "id": "6bab4300-67a9-4bd4-859a-28fcc291b149",
       "alias": "First broker login - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1612,7 +1688,7 @@
       ]
     },
     {
-      "id": "83618ee2-b6a6-4592-8d88-74ef78e216f3",
+      "id": "6b974d79-b57f-41b6-b481-0f289bba369f",
       "alias": "Handle Existing Account",
       "description": "Handle what to do if there is existing account with same email/username like authenticated identity provider",
       "providerId": "basic-flow",
@@ -1638,7 +1714,7 @@
       ]
     },
     {
-      "id": "c683213c-cb99-498c-b10c-2ab9bcce46d8",
+      "id": "a0e90a8a-8379-4e63-95cf-e51397dfae1d",
       "alias": "Reset - Conditional OTP",
       "description": "Flow to determine if the OTP should be reset or not. Set to REQUIRED to force.",
       "providerId": "basic-flow",
@@ -1664,7 +1740,7 @@
       ]
     },
     {
-      "id": "ca91fb59-94e3-47cc-825c-28eec31bbf42",
+      "id": "5160e46c-25c5-4fa6-9882-b105fa788ac7",
       "alias": "User creation or linking",
       "description": "Flow for the existing/non-existing user alternatives",
       "providerId": "basic-flow",
@@ -1691,7 +1767,7 @@
       ]
     },
     {
-      "id": "459eb827-f682-4625-994f-b6780e645cc1",
+      "id": "cecbab89-636f-4627-a89d-2f259845b40c",
       "alias": "Verify Existing Account by Re-authentication",
       "description": "Reauthentication of existing account",
       "providerId": "basic-flow",
@@ -1717,7 +1793,7 @@
       ]
     },
     {
-      "id": "b68a4097-778f-42a1-b048-421d8340807f",
+      "id": "fe26191f-7c81-432c-8a25-593f1fa8f84d",
       "alias": "browser",
       "description": "browser based authentication",
       "providerId": "basic-flow",
@@ -1759,7 +1835,7 @@
       ]
     },
     {
-      "id": "a563953a-0145-4dd4-b05f-f33865149fed",
+      "id": "81865598-f330-4f55-91e3-12bfa9e83e1f",
       "alias": "clients",
       "description": "Base authentication for clients",
       "providerId": "client-flow",
@@ -1801,7 +1877,7 @@
       ]
     },
     {
-      "id": "49f8198b-9591-4407-93b0-d10210495363",
+      "id": "820c0fca-9429-41b4-be7c-14e717979f38",
       "alias": "direct grant",
       "description": "OpenID Connect Resource Owner Grant",
       "providerId": "basic-flow",
@@ -1835,7 +1911,7 @@
       ]
     },
     {
-      "id": "38672e1c-e5a7-44c6-b7c4-c48050d0f3f0",
+      "id": "3b8154ed-1a2b-4844-ab30-47647725e3b6",
       "alias": "docker auth",
       "description": "Used by Docker clients to authenticate against the IDP",
       "providerId": "basic-flow",
@@ -1853,7 +1929,7 @@
       ]
     },
     {
-      "id": "da357f30-d45d-4db2-a37f-cc50a244d551",
+      "id": "0c27f2e4-e615-4aaf-9bcb-73453b73fa37",
       "alias": "first broker login",
       "description": "Actions taken after first broker login with identity provider account, which is not yet linked to any Keycloak account",
       "providerId": "basic-flow",
@@ -1880,7 +1956,7 @@
       ]
     },
     {
-      "id": "85a91ca4-32e6-4152-a615-8aadfe1ee853",
+      "id": "6a79acaa-707a-4fca-ab73-29b961cdccf8",
       "alias": "forms",
       "description": "Username, password, otp and other auth forms.",
       "providerId": "basic-flow",
@@ -1906,7 +1982,7 @@
       ]
     },
     {
-      "id": "393dbd68-3460-4366-ab10-5fc7e588be62",
+      "id": "f711eb3b-86f5-4297-961a-c76a39c74a4a",
       "alias": "http challenge",
       "description": "An authentication flow based on challenge-response HTTP Authentication Schemes",
       "providerId": "basic-flow",
@@ -1932,7 +2008,7 @@
       ]
     },
     {
-      "id": "0b2a4a7e-8cc2-49ff-b744-348b8b8b2ea0",
+      "id": "742ec91c-9011-4d00-8235-57d1ddb624eb",
       "alias": "registration",
       "description": "registration flow",
       "providerId": "basic-flow",
@@ -1951,7 +2027,7 @@
       ]
     },
     {
-      "id": "9d2f6e69-c96a-486e-8124-9895e24b3b34",
+      "id": "a3a57f53-956e-49c6-a0c3-6ddfa7621425",
       "alias": "registration form",
       "description": "registration form",
       "providerId": "form-flow",
@@ -1993,7 +2069,7 @@
       ]
     },
     {
-      "id": "9d92be2f-c000-4c88-acb5-43f73efed758",
+      "id": "a6388678-8bff-444f-83ea-86819a0c1ecd",
       "alias": "reset credentials",
       "description": "Reset credentials for a user if they forgot their password or something",
       "providerId": "basic-flow",
@@ -2035,7 +2111,7 @@
       ]
     },
     {
-      "id": "44492909-06ba-4a0b-80bc-0483043d5d51",
+      "id": "7cd8719d-a64b-4ea3-a435-c78abbdd9c59",
       "alias": "saml ecp",
       "description": "SAML ECP Profile Authentication Flow",
       "providerId": "basic-flow",
@@ -2055,14 +2131,14 @@
   ],
   "authenticatorConfig": [
     {
-      "id": "664601ed-7cb9-4fbe-9401-c43c78da89f8",
+      "id": "531d7357-99ef-4464-8bb5-b5c3dd4d4907",
       "alias": "create unique user config",
       "config": {
         "require.password.update.after.registration": "false"
       }
     },
     {
-      "id": "300d7cff-afd0-4c77-b0f9-6bcfea8bbe61",
+      "id": "8997366f-23af-4826-bac1-41ff13b86831",
       "alias": "review profile config",
       "config": {
         "update.profile.on.first.login": "missing"
