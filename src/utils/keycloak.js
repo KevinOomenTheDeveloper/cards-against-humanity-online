@@ -1,10 +1,13 @@
-import Keycloak from 'keycloak-js'
+import Keycloak from 'keycloak-js';
+import {keyCloakUrl, keyCloakRealm, keyCloakClientId} from './config';
 
+console.log(keyCloakClientId, keyCloakUrl , keyCloakRealm);
 const config = {
-  "realm": "cards-against-humanity-online",
-  "clientId": "front-end",
-  "url": "http://localhost:8180/auth"
+  "realm": keyCloakRealm,
+  "clientId": keyCloakClientId,
+  "url": keyCloakUrl
 };
+
 const init = {
     onLoad: 'login-required'
 }
