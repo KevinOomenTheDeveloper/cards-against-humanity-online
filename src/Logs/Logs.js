@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import { useKeycloak } from "@react-keycloak/web";
 import axios from "axios";
 import { backendUrl } from "../utils/config";
-import { LogItem } from "./LogItem/LogItem"
 
 const Logs = () => {
     const {keycloak} = useKeycloak();
@@ -18,9 +17,7 @@ const Logs = () => {
             const result = await axios(`${backendUrl}/message/logs`, config);
             return result.data;
         }
-        console.log(logs);
         fetch().then(m => setLogs(m));
-        console.log(logs);
     }, [keycloak.token]);
 
     return (

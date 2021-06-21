@@ -2,7 +2,6 @@ import { Route, Switch } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import Home from "../Home/Home";
 import Logs from "../Logs/Logs";
-import WebSocketTest from "../WebSocketTest/WebSocketTest";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useKeycloak } from "@react-keycloak/web";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
